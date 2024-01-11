@@ -1,0 +1,196 @@
+Public Function NIW(ByVal number As String)
+
+    Dim i As String
+    Dim u As Integer
+    Dim t As Integer
+    Dim h As Integer
+    Dim th As Integer
+    Dim tth As Integer
+    Dim l As Integer
+    Dim tl As Integer
+    Dim c As Integer
+    Dim tc As Integer
+    Dim digit As Integer
+    Dim nlen As Integer
+    Dim arr1() As String
+    Dim arr2() As String
+    Dim arr3() As String
+    Dim sOutput1 As String
+    Dim sOutput2 As String
+    Dim sOutput3 As String
+    Dim sOutput4 As String
+    Dim sOutput5 As String
+    Dim sOutput6 As String
+    Dim sOutput7 As String
+    Dim sOutput8 As String
+    
+    
+    
+    
+    arr1 = Split("One,Two,Three,Four,Five,Six,Seven,Eigth,Nine", ",")
+    arr2 = Split("Eleven,Twelve,Thirteen,Fourteen,Fifteen,Sixteen,Seventeen,Eighteen,Nineteen", ",")
+    arr3 = Split("Ten,Twenty,Thirty,Forty,Fifty,Sixty,Seventy,Eighty,Ninety", ",")
+
+    i = number
+    nlen = Len(i)
+   
+    
+    For f = 1 To nlen
+    
+        digit = Mid(i, f, 1)
+    
+        If f = nlen Then
+            u = digit
+        Else
+            If f = nlen - 1 Then
+                t = digit
+            Else
+                If f = nlen - 2 Then
+                    h = digit
+                Else
+                    If f = nlen - 3 Then
+                        th = digit
+                    Else
+                        If f = nlen - 4 Then
+                            tth = digit
+                        Else
+                            If f = nlen - 5 Then
+                                l = digit
+                            Else
+                                If f = nlen - 6 Then
+                                    tl = digit
+                                Else
+                                    If f = nlen - 7 Then
+                                        c = digit
+                                    Else
+                                        If f = nlen - 8 Then
+                                            tc = digit
+                                        Else
+                                            sOutput1 = "To Large"
+                                            
+                                            NIW = sOutput1
+                                            Exit Function
+                                        End If
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    
+    Next
+    
+    If t = 0 And u <> 0 Then
+        sOutput1 = arr1(u - 1)
+    Else
+        If t <> 0 And u = 0 Then
+            sOutput1 = arr3(t - 1)
+        Else
+            If t >= 2 And u <> 0 Then
+                sOutput1 = arr3(t - 1) & " " & arr1(u - 1)
+            Else
+                If t = 1 And u <> 0 Then
+                    sOutput1 = arr2(u - 1)
+                End If
+            End If
+        End If
+    End If
+    
+    If h <> 0 Then
+        sOutput2 = arr1(h - 1) & " Hundred "
+    Else
+        sOutput2 = ""
+    End If
+    
+    
+    If tth = 1 Then
+        sOutput3 = sOutput2
+    Else
+        If th <> 0 Then
+            sOutput3 = arr1(th - 1) & " Thousand " & sOutput2
+        Else
+            sOutput3 = sOutput2
+        End If
+    End If
+    
+    
+    If tth >= 2 And th = 0 Then
+        sOutput4 = arr3(tth - 1) & " Thousand " & sOutput3
+    Else
+        If tth >= 2 Then
+            sOutput4 = arr3(tth - 1) & " Thousand " & sOutput3
+        Else
+            If tth = 1 And th <> 0 Then
+                sOutput4 = arr2(th - 1) & " Thousand " & sOutput3
+            Else
+                sOutput4 = sOutput3
+            End If
+        End If
+    End If
+    
+    
+    If tl = 1 Then
+        sOutput5 = sOutput4
+    Else
+        If l <> 0 Then
+            sOutput5 = arr1(l - 1) & " Lakh " & sOutput4
+        Else
+            sOutput5 = sOutput4
+        End If
+    End If
+    
+    
+    If tl >= 2 And l = 0 Then
+        sOutput6 = arr3(tl - 1) & " Lakh " & sOutput5
+    Else
+        If tl >= 2 Then
+            sOutput6 = arr3(tl - 1) & " " & sOutput5
+        Else
+            If tl = 1 And l <> 0 Then
+                sOutput6 = arr2(l - 1) & " Lakh " & sOutput5
+            Else
+                sOutput6 = sOutput5
+            End If
+        End If
+    End If
+    
+    
+    If tc = 1 Then
+        sOutput7 = sOutput6
+    Else
+        If c <> 0 Then
+            sOutput7 = arr1(c - 1) & " Crore " & sOutput6
+        Else
+            sOutput7 = sOutput6
+        End If
+    End If
+    
+    
+    If tc >= 2 And c = 0 Then
+        sOutput8 = arr3(tc - 1) & " Crore " & sOutput7
+    Else
+        If tc >= 2 Then
+            sOutput8 = arr3(tc - 1) & " " & sOutput7
+        Else
+            If tc = 1 And c <> 0 Then
+                sOutput8 = arr2(c - 1) & " Crore " & sOutput7
+            Else
+                sOutput8 = sOutput7
+            End If
+        End If
+    End If
+    
+    
+    If sOutput8 = "" Then
+        NIW = sOutput1
+    Else
+        If sOutput1 = "" Then
+            NIW = sOutput8
+        Else
+            NIW = sOutput8 & "and " & sOutput1
+        End If
+    End If
+    
+    End Function

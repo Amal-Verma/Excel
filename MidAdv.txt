@@ -1,0 +1,20 @@
+Public Function MidAdv(ByVal cell As String, ByVal parameter1 As String, ByVal parameter2 As String)
+
+    Dim str As String
+    Dim a As String
+    Dim b As String
+    Dim sOutput As String
+    
+    str = cell
+    a = parameter1
+    b = parameter2
+    
+    If a = "" Then
+        sOutput = Mid(str, InStr(1, str, a), InStr(1, str, b) - InStr(1, str, a))
+    Else
+        sOutput = Mid(str, InStr(1, str, a) + 1, InStr(1, str, b) - InStr(1, str, a) - 1)
+    End If
+    
+    MidAdv = sOutput
+
+End Function

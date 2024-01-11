@@ -1,0 +1,33 @@
+Public Function CamelCase(ByVal sInput As String) As String
+
+    Dim str As String
+    Dim sOutput As String
+    Dim wlen As Integer
+    Dim nSpace As Integer
+    Dim i As Integer
+    Dim letter As String
+    
+    
+    str = sInput
+    wlen = Len(str)
+   
+    
+    For i = 1 To wlen
+    
+        letter = Mid(str, i, 1)
+        
+        If letter = " " Then
+            nSpace = i + 1
+        End If
+        
+        If i = 1 Or i = nSpace Then
+            sOutput = sOutput & UCase(letter)
+        Else
+            sOutput = sOutput & LCase(letter)
+        End If
+    
+    Next
+    
+    CamelCase = sOutput
+    
+End Function

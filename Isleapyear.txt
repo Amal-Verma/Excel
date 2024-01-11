@@ -1,0 +1,34 @@
+Public Function Isleapyear(ByVal Y As String)
+
+    On Error Resume Next
+
+    Dim leap As String
+    Dim i1 As Integer
+    Dim i2 As Integer
+    Dim i3 As Integer
+    Dim div1 As Integer
+    Dim div2 As Integer
+    Dim div3 As Integer
+
+    leap = Y
+    div1 = (leap / 4)
+    div2 = (leap / 100)
+    div3 = (leap / 400)
+
+    
+    If leap / 4 = div1 Then
+        Isleapyear = "Yes"
+        If leap / 100 = div2 Then
+            If leap / 400 = div3 Then
+                Isleapyear = "Yes"
+            Else
+                Isleapyear = "No"
+            End If
+        End If
+    Else
+        Isleapyear = "No"
+    End If
+    
+
+
+End Function
